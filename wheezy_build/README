@@ -1,0 +1,30 @@
+*********************************************************
+Building packages compatible with debian Wheezy and later
+*********************************************************
+
+needs vagrant:
+
+$ aptitude install vagrant
+
+simpler with plugin vagrant-vbguest:
+
+$ vagrant plugin install vagrant-vbguest
+
+or if install complains about conflicting dependencies, you may try:
+
+$ VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant plugin install vagrant-vbguest
+
+Then:
+
+$ vagrant up
+
+$ ./builddeb <gpg key id>
+
+or
+
+$ ./builddeb UNSIGNED
+
+Debian packages then end-up in the packages/ directory
+
+FIXME: as this dir is rsynced to the vagrant box, the size of the box
+will grow as more packages are built
