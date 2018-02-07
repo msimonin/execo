@@ -102,10 +102,8 @@ class g5k_graph(nx.MultiGraph):
                     e = get_host_shortname(e)
                     if e in get_g5k_hosts():
                         self.add_host(e, self.data['hosts'][e])
-            print('self.get_sites() before adding backbone: %s %s' % (len(self.get_sites()), self.get_sites()))
             if len(self.get_sites()) > 1:
                 self.add_backbone()
-            print('self.get_sites() after adding backbone: %s %s' % (len(self.get_sites()), self.get_sites()))
 
     # add/update/rm elements, public methods
     def add_host(self, host, data=None):
