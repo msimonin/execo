@@ -442,7 +442,7 @@ class _Conductor(object):
         now = time.time()
         while len(self.__timeline) > 0 and self.__timeline[0][0] <= now:
             _, process = heapq.heappop(self.__timeline)
-            if now >= process._force_kill_timeout_date:
+            if process._force_kill_timeout_date != None and now >= process._force_kill_timeout_date:
                 logger.debug("force kill timeout on %s" % (str(process),))
                 process._force_kill()
             elif now >= process.timeout_date:
