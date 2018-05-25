@@ -759,6 +759,6 @@ def set_nodes_vlan(site, hosts, interface, vlan_id):
         splitted[0] = splitted[0] + "-" + interface
         return ".".join(splitted)
 
-    network_addresses = map(_to_network_address, hosts)
+    network_addresses = [ _to_network_address(h) for h in hosts ]
     logger.info("Setting %s in vlan %s of site %s" % (network_addresses, vlan_id, site))
     return _get_g5k_api().post('/sites/%s/vlans/%s' % (site, str(vlan_id)), {"nodes": network_addresses})
